@@ -3,10 +3,6 @@ from transformers import AutoTokenizer
 from datasets import load_from_disk
 
 def preprocess_monolingual_lugbarati(examples, tokenizer):
-    """
-    Tokenizes pure Lugbarati text cleanly without forcing 
-    translation-mode switches that trigger tokenizer errors.
-    """
     lugbarati_text = examples["text_transcript"]
 
     model_inputs = tokenizer(
@@ -25,10 +21,10 @@ def main():
     dataset_path = "./data/lugbarati_final_build"
     
     if not os.path.exists(dataset_path):
-        print(f" Could not find folder '{dataset_path}'. Please check if it is inside the 'data' folder.")
+        print(f" Could not find folder '{dataset_path}'")
         return
         
-    print(" Loading your full Lugbarati master build from the data folder...")
+    print(" Loading my full Lugbarati master build from the data folder...")
     raw_dataset = load_from_disk(dataset_path)
     
 
